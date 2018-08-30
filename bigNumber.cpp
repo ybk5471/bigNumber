@@ -53,18 +53,33 @@ bigNumber bigNumber::operator-(const bigNumber &n) const {
 
 bool bigNumber::operator<(const bigNumber &n) const {
     if (!isNegative() && !n.isNegative()) {
-//         if ((m_number.size() - m_decimalLen - (0 == m_decimalLen ? 0 : 1)) < ()) {
-//             return true;
-//         } else (() > ()) {
-//             return false;
-//         } else {
-//
-//         }
-        return false;
+        if (getIntLen() < n.getIntLen()) {
+            return true;
+        } else if (getIntLen() > n.getIntLen()) {
+            return false;
+        } else {
+            auto len0 = m_number.size();
+            auto len1 = n.m_number.size();
+            auto lenMax = len0 > len1 ? len0 : len1;
+            auto lenMin = len0 < len1 ? len0 : len1;
+            bool isThisSmaller = true;
+            for (lenType i = 0; i < lenMax; ++i) {
+                if (i < lenMin) {
+                    if (c2Num(m_number[i]) >= c2Num(n.m_number[i])) {
+                        isThisSmaller =  false;
+                        break;
+                    }
+                } else {
+                    isThisSmaller =  len0 < len1;
+                    break;
+                }
+            }
+            return isThisSmaller;
+        }
     } else if (!isNegative() && n.isNegative()) {
-        return true;
-    } else if (isNegative() && !n.isNegative()) {
         return false;
+    } else if (isNegative() && !n.isNegative()) {
+        return true;
     } else {
         return !(abs(*this) < abs(n));
     }

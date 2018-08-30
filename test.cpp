@@ -1,4 +1,6 @@
-#include "bigNumber.cpp"
+#include <iostream>
+
+#include "bigNumber.h"
 
 int main() {
     ///@note: add test
@@ -23,5 +25,12 @@ int main() {
     BigNumber::bigNumber num5("-777.865");
     num = BigNumber::abs(num5);
     num.print();
+
+    std::cout << (num0 < num1) << std::endl;
+    std::cout << (num0 < num3) << std::endl;
+    std::cout << (num3 < num4) << std::endl;
+    std::cout << (num4 < num5) << std::endl;
+
+
     return 0;
 }
