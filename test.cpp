@@ -1,12 +1,27 @@
 #include "bigNumber.cpp"
 
 int main() {
-    BigNumber::bigNumber num1("78.999668439576");
-    BigNumber::bigNumber num2("8568.789996987");
-    auto num = num1 + num2;
+    ///@note: add test
+    BigNumber::bigNumber num0("999.94654643213");
+    BigNumber::bigNumber num1("32013946.78965746221");
+    BigNumber::bigNumber num3("7986");
+    BigNumber::bigNumber num4("354");
+
+    auto num = num1 + num0;
+    num.print(); ///@note: result: 32014946.73620389434
+
+    num = num3 + num0;
+    num.print(); ///@note: result: 8985.94654643213
+
+    num = num3 + num4;
+    num.print(); ///@note: result: 8340
+
+    ///@note: subtract
+    num = num3 - num4;
+    num.print(); ///@note: result:
+
+    BigNumber::bigNumber num5("-777.865");
+    num = BigNumber::abs(num5);
     num.print();
     return 0;
 }
-8568.789996987
-  78.999668439576
-85.3,678554316576
