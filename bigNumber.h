@@ -7,6 +7,7 @@ namespace BigNumber {
 class bigNumber {
     using lenType = std::string::size_type;
 public:
+    bigNumber();
     bigNumber(const long long &number);
     bigNumber(const std::string &numberStr);
     ~bigNumber();
@@ -15,9 +16,15 @@ public:
     bigNumber operator-(const bigNumber &n) const;
 
     bool operator<(const bigNumber &n) const;
+    bool operator>(const bigNumber &n) const;
+    bool operator==(const bigNumber &n) const;
+
+    bool operator<=(const bigNumber &n) const;
+    bool operator>=(const bigNumber &n) const;
 
     friend bigNumber abs(const bigNumber &n);
-    lenType operator[](const lenType index) const;
+    friend void alignment(bigNumber &n0, bigNumber &n1);
+    int operator[](const lenType index) const;
 
     void print() const;
 private:
@@ -26,15 +33,15 @@ private:
     bigNumber positiveIntegerSubtract(const bigNumber &n0, const bigNumber &n1) const;
 
     bool isNegative() const;
-    void initDecimalLen();
+    void fixNumber();
 
     lenType getIntLen() const;
 
-    lenType c2Num(char ch) const {
-        return static_cast<lenType>(ch - '0');
+    int c2Num(char ch) const {
+        return static_cast<int>(ch - '0');
     }
 
-    char n2Char(lenType i) const {
+    char n2Char(int i) const {
         return static_cast<char>(i + '0');
     }
 
@@ -44,5 +51,6 @@ private:
 };
 
 bigNumber abs(const bigNumber &n);
+void alignment(bigNumber &n0, bigNumber &n1);
 
 } /* namespace BigNumber */
