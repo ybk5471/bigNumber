@@ -8,12 +8,16 @@ class bigNumber {
     using lenType = std::string::size_type;
 public:
     bigNumber();
-    bigNumber(const long long &number);
     bigNumber(const std::string &numberStr);
     ~bigNumber();
 
     bigNumber operator+(const bigNumber &n) const;
     bigNumber operator-(const bigNumber &n) const;
+    bigNumber operator*(int n) const;
+    bigNumber operator*(const bigNumber &n) const;
+    bigNumber pow(int n) const;
+
+//     bigNumber operator/(const bigNumber &n) const;
 
     bool operator<(const bigNumber &n) const;
     bool operator>(const bigNumber &n) const;
@@ -27,11 +31,17 @@ public:
     int operator[](const lenType index) const;
 
     void print() const;
+    lenType getd() const {
+        return m_decimalLen;
+    }
 private:
     //positive integer add
     bigNumber positiveIntegerAdd(const bigNumber &n0, const bigNumber &n1) const;
     bigNumber positiveIntegerSubtract(const bigNumber &n0, const bigNumber &n1) const;
+    bigNumber positiveIntegerMultiply(bigNumber num, int n) const;
+    bigNumber karatsuba(const bigNumber &n0, const bigNumber &n1) const;
 
+    bigNumber toPositiveInteger() const;
     bool isNegative() const;
     void fixNumber();
 
