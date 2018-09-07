@@ -95,13 +95,6 @@ int main() {
     assert(num6 == num6 % num1);
     assert(BigNumber::bigNumber("3") == num1 % num7);
 
-
-    assert(BigNumber::bigNumber("-285839.555493617") == num2.pow(3));
-    assert(BigNumber::bigNumber("-285839.555493617") == num2.pow(3));
-    assert(BigNumber::bigNumber("-285839.555493617") == num2.pow(3));
-    assert(BigNumber::bigNumber("-285839.555493617") == num2.pow(3));
-
-
     assert(BigNumber::bigNumber("-285839.555493617") == num2.pow(3));
 
     std::cout << "The test completed successfully!" << std::endl;
