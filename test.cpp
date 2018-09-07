@@ -39,16 +39,24 @@ int main() {
 //     num15.print();
 
 
+
     BigNumber::bigNumber num0("111.22");
     BigNumber::bigNumber num1("0333");
     BigNumber::bigNumber num2("-065.873");
     BigNumber::bigNumber num3("-0654");
+    BigNumber::bigNumber num4("-0.0007");
+    BigNumber::bigNumber num5("7.879");
+    BigNumber::bigNumber num6("111");
+    BigNumber::bigNumber num7("-110");
+    BigNumber::bigNumber num8("-111");
 
-    assert(num0 == num0);
+    assert(BigNumber::bigNumber("111") != BigNumber::bigNumber("-111.0"));
+    assert(BigNumber::bigNumber("111") == BigNumber::abs(BigNumber::bigNumber("-111.0")));
     assert(num0 < num1);
     assert(num2 > num3);
     assert(num1 <= abs(num3));
     assert(num0 >= num2);
+
 
     assert(BigNumber::bigNumber("444.22") == num0 + num1);
     assert(BigNumber::bigNumber("45.347") == num0 + num2);
@@ -71,10 +79,31 @@ int main() {
     assert(BigNumber::bigNumber("-72737.88") == num3 * num0);
     assert(BigNumber::bigNumber("43080.942") == num2 * num3);
     assert(BigNumber::bigNumber("43080.942") == num3 * num2);
+    assert(BigNumber::bigNumber("-0.0055153") == num4 * num5);
+
+    assert(BigNumber::bigNumber("-0.000088843761898718111") == num4 / num5);
+    assert(BigNumber::bigNumber("0.333993993993993993994") == num0 / num1);
+    assert(BigNumber::bigNumber("0.000001070336391437309") == num4 / num3);
+    assert(BigNumber::bigNumber("3") == num1 / num6);
+    assert(BigNumber::bigNumber("0") == num6 / num1);
+    assert(BigNumber::bigNumber("14.116004569107754791217") == num0 / num5);
+    assert(BigNumber::ZERO == num1 / num3);
+    assert(BigNumber::ONE == num6 % num7);
+    assert(BigNumber::bigNumber("-1") == num8 % num7);
+    assert(num7 == num7 % num6);
+    assert(BigNumber::ZERO == num1 % num6);
+    assert(num6 == num6 % num1);
+    assert(BigNumber::bigNumber("3") == num1 % num7);
+
+
+    assert(BigNumber::bigNumber("-285839.555493617") == num2.pow(3));
+    assert(BigNumber::bigNumber("-285839.555493617") == num2.pow(3));
+    assert(BigNumber::bigNumber("-285839.555493617") == num2.pow(3));
+    assert(BigNumber::bigNumber("-285839.555493617") == num2.pow(3));
+
 
     assert(BigNumber::bigNumber("-285839.555493617") == num2.pow(3));
 
     std::cout << "The test completed successfully!" << std::endl;
-
     return 0;
 }
